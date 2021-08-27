@@ -79,9 +79,9 @@ https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-onli
 ```
 
 # Get access token to the Microsoft client ids which can call the SP native endpoint
-How this works is during login we do a normal login to our azure application (https://login.microsoftonline.com/{Tenant id}/oauth2/v2.0). After successful login we won’t close the Webview, instead we do another login request to the Microsoft client id which has capability to call that oauth native endpoint. In the end we have two different access tokens which we can use, and we need the MS client access token only for the native endpoint.
+How this works is during login we do a normal login to our azure application (https://login.microsoftonline.com/{Tenant id}/oauth2/v2.0). After successful login we won’t close the Webview, instead we do another login request to the Microsoft client id which has capability to call that oauth native endpoint. In the end we have two different access tokens which we can use. We need the MS client access token only for the native endpoint.
 
-**But doesn’t this require additional login because the client id is different**? No, it doesn’t require additional login, because microsoftonline checks if “ESTSAUTHPERSISTENT” cookie exist, which seems to be short living cookie and it grants you ability to authenticate without credentials.
+**But doesn’t this require additional login because the client id is different**? No, it doesn’t require additional login, because microsoftonline use “ESTSAUTHPERSISTENT” cookie, which seems to be short living cookie and it grants you ability to authenticate without credentials.
 
 Disadvantage with this kind of approach is that you can’t use any SSO apps like MS Authenticator, because authentication need to happen in webview which we can control.
 
@@ -95,7 +95,7 @@ Note: Edit Strings.xml to match your environment parameters
 # Have own restricted mobile news template
 When you check the `Clearbox Employee mobile app choices` result ( https://www.clearbox.co.uk/employee-mobile-app-choices-2021/ ) what all of those apps have common is that every apps are using relatively simple rich text editor for content creation.
 
-What we can do to replicate this kind of content creations in Sharepoint is following. Create a mobile news specific template and restrict web part usage in this page. Then in the mobile app we can do a custom rendering logic for the selected web parts which means that we don’t need to open it into browser. This way we can utilize Sharepoint web parts in the news.
+What we can do to replicate this kind of content creations in Sharepoint is following. Create a mobile news specific template and restrict web part usage in this page. Then in the mobile app we can do a custom rendering logic for the selected web parts which means that we don’t need to open it into browser. This way we can utilize Sharepoint web parts in the news. Of course, we also can have like ex. external text editor PWA for content creation, but our focus was doing it in Sharepoint.
 
 **Cool, but how we get the data?** We can get the web part data by using SP search api and parse/decode the “CanvasContent” field. This field has all the information what is needed to do a custom rendering for the web part.
 
@@ -116,5 +116,5 @@ Demo:
 ![Demo custom renderer](./media/custom-renderer.gif)
 
 # Get needed JS libraries to render a web part
-Idea for this was to use or replicate behaver of the SPComponentLoader class ( https://docs.microsoft.com/en-us/javascript/api/sp-loader/spcomponentloader?view=sp-typescript-latest ) which loads all needed files to render a web part. Unfortunately we didn't had time to investigate this further.
+Idea for this was to use or replicate behaver of the SPComponentLoader class ( https://docs.microsoft.com/en-us/javascript/api/sp-loader/spcomponentloader?view=sp-typescript-latest ) which loads all needed files to render a web part. Unfortunately, we didn't had time to investigate this further.
 
