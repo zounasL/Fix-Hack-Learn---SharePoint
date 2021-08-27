@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Hack - Multiple client id</string>
+    <string name="title_activity_news">NewsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="redirectUri">https://login.microsoftonline.com/common/oauth2/nativeclient</string>
+    <string name="microsoftonline">https://login.microsoftonline.com/3cd56a13-41d1-4475-b687-e55abc72821a/oauth2/v2.0</string>
+    <string name="tenant">https://smdevmob.sharepoint.com</string>
+    <string name="clientId">5ec2da98-c7ec-4a61-81b4-128e48fc067d</string>
+    <string name="msMicrosoftonline">https://login.microsoftonline.com/common/oauth2/v2.0</string>
+    <string name="msClientId">1fec8e78-bce4-4aaf-ab1b-5451cc387264</string>
+    <string name="msRedirectUri">https://login.microsoftonline.com/common/oauth2/nativeclient</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_application">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+</resources>
