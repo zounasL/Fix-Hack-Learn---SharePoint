@@ -83,7 +83,7 @@ How this works is during login we do a normal login to our azure application (ht
 
 **But doesn’t this require additional login because the client id is different**? No, it doesn’t require additional login, because microsoftonline use “ESTSAUTHPERSISTENT” cookie, which seems to be short living cookie and it grants you ability to authenticate without credentials.
 
-Disadvantage with this kind of approach is that you can’t use any SSO apps like MS Authenticator, because authentication need to happen in webview which we can control.
+Disadvantage with this kind of approach is that you can’t use any SSO apps like MS Authenticator, because authentication need to happen in webview which we can control. However, because we have full control of Webview it also means that we have access to users credentials which we can ex. save to keychain/credential storage. This way we can replicate the MS authenticator app functionality in our app.
 
 ## Demo
 App folder: multiClient
@@ -99,7 +99,7 @@ What we can do to replicate this kind of content creations in Sharepoint is foll
 
 **Cool, but how we get the data?** We can get the web part data by using SP search api and parse/decode the “CanvasContent” field. This field has all the information what is needed to do a custom rendering for the web part.
 
-Reason why we want to do own template for news is to have better control what kind of web parts are supported in the mobile app. Disadvantage is that then we have two different news sources, but this might be feasible in cases where you want to have own news datatype for the mobile. One way maybe to tackle this is to have some kind of news converter which will duplicate created news and filers out web parts which are not supported.
+Reason why we want to do own template for news is to have better control what kind of web parts are supported in the mobile app. Disadvantage is that then we have two different news sources, but this might be feasible in cases where you want to have own news datatype for the mobile. One way maybe to tackle this is to have some kind of news converter which will duplicate created news and filters out web parts which are not supported.
 
 
 Example css how to hide web parts from the toolbox
