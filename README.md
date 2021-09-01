@@ -1,4 +1,4 @@
-# How to show SharePoint news in mobile app without multiple authentications flow
+# How to show SharePoint news in mobile app without multiple authentications flows
 Currently if you use Oauth2 authentication flow you will get an access- and refresh token which are scoped to specifics services, like ex. Graph and SharePoint API. You can then use these tokens to get data from SharePoint through APIs.
 
 To show content from SharePoint you need to have a ** SP Online Active Authentication Cookie** (spoidcrl) or **The root Federation Authentication** (rtFA) and **The Federation Authentication** (FedAuth) cookies. At the moment you are not able to get these cookies with the access token (or actually you can, but it contains a catch which we will cover in a moment).
