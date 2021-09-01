@@ -1,12 +1,12 @@
-# How to show Sharepoint news in mobile app without multiple authentications flow
-Currently if you use Oauth2 authentication flow you will get an access- and refresh token which are scoped to specifics services, like ex. Graph and Sharepoint API. You can then use these tokens to get data from Sharepoint through APIs.
+# How to show SharePoint news in mobile app without multiple authentications flow
+Currently if you use Oauth2 authentication flow you will get an access- and refresh token which are scoped to specifics services, like ex. Graph and SharePoint API. You can then use these tokens to get data from SharePoint through APIs.
 
-To show content from Sharepoint you need to have a ** SP Online Active Authentication Cookie** (spoidcrl) or **The root Federation Authentication** (rtFA) and **The Federation Authentication** (FedAuth) cookies. At the moment you are not able to get these cookies with the access token (or actually you can, but it contains a catch which we will cover in a moment).
+To show content from SharePoint you need to have a ** SP Online Active Authentication Cookie** (spoidcrl) or **The root Federation Authentication** (rtFA) and **The Federation Authentication** (FedAuth) cookies. At the moment you are not able to get these cookies with the access token (or actually you can, but it contains a catch which we will cover in a moment).
 
 ## But Microsoft is doing this. How they then do it?
-Microsoft also use Oauth2 method to authenticate the user to their mobile apps, so why they then can show Sharepoint pages in their apps? Like ex. in Teams or Sharepoint mobile app.
+Microsoft also use Oauth2 method to authenticate the user to their mobile apps, so why they then can show SharePoint pages in their apps? Like ex. in Teams or SharePoint mobile app.
 
-How Microsoft do this is that they call `_api/SP.Oauth.NativeClient/Authenticate` endpoint with the access token which is scoped to the tenant (scope ex. https://contoso.sharepoint.com). The endpoint will return a spoidcrl cookie which can be saved to platform webview cookie manager service. Now when user opens a Sharepoint page the webview will get the spoidcrl cookie and if the cookie is valid Sharepoint will show opened page in the webview.
+How Microsoft do this is that they call `_api/SP.Oauth.NativeClient/Authenticate` endpoint with the access token which is scoped to the tenant (scope ex. https://contoso.SharePoint.com). The endpoint will return a spoidcrl cookie which can be saved to platform webview cookie manager service. Now when user opens a SharePoint page the webview will get the spoidcrl cookie and if the cookie is valid SharePoint will show opened page in the webview.
 
 Python test
 ```
@@ -57,11 +57,11 @@ We tested couple of client ids which were able to call this endpoint:
 
 ```
 SP Oauth Native client endpoint documentation:
-https://docs.microsoft.com/en-us/openspecs/sharepoint_protocols/ms-oauth2ex/fef8faa6-76fd-44d6-8cca-a5a69100c66a
+https://docs.microsoft.com/en-us/openspecs/SharePoint_protocols/ms-oauth2ex/fef8faa6-76fd-44d6-8cca-a5a69100c66a
 ```
 ```
 There is also open user voice ticket related to this issue:
-https://sharepoint.uservoice.com/forums/329220-sharepoint-dev-platform/suggestions/41745832-allow-3rd-party-native-clients-to-call-sp-oauth-na
+https://SharePoint.uservoice.com/forums/329220-SharePoint-dev-platform/suggestions/41745832-allow-3rd-party-native-clients-to-call-sp-oauth-na
 ```
 
 ## What can we do about it then?
@@ -72,10 +72,10 @@ Couple of things what we can try:
 - [ ] Get needed JS libraries to render a web part
 
 ## Do we have any other options?
-Well one thing what comes up to my mind is to use Security Token Service Endpoint to acquire Binary security token. When you have got the Binary security token you can call `https://{Tenant}.sharepoint.com/_vti_bin/idcrl.svc ` with the token to acquire SPOIDCRL cookie.
+Well one thing what comes up to my mind is to use Security Token Service Endpoint to acquire Binary security token. When you have got the Binary security token you can call `https://{Tenant}.SharePoint.com/_vti_bin/idcrl.svc ` with the token to acquire SPOIDCRL cookie.
 ```
 More info about this can be found in here:
-https://techcommunity.microsoft.com/t5/microsoft-sharepoint-blog/sharepoint-online-active-authentication/ba-p/510052
+https://techcommunity.microsoft.com/t5/microsoft-SharePoint-blog/SharePoint-online-active-authentication/ba-p/510052
 ```
 
 # Get access token to the Microsoft client ids which can call the SP native endpoint
@@ -95,7 +95,7 @@ Note: Edit Strings.xml to match your environment parameters
 # Have own restricted mobile news template
 When you check the `Clearbox Employee mobile app choices` result ( https://www.clearbox.co.uk/employee-mobile-app-choices-2021/ ) what all of those apps have common is that every apps are using relatively simple rich text editor for content creation.
 
-What we can do to replicate this kind of content creations in Sharepoint is following. Create a mobile news specific template and restrict web part usage in this page. Then in the mobile app we can do a custom rendering logic for the selected web parts which means that we don’t need to open it into browser. This way we can utilize Sharepoint web parts in the news. Of course, we also can have like ex. external text editor PWA for content creation, but our focus was doing it in Sharepoint.
+What we can do to replicate this kind of content creations in SharePoint is following. Create a mobile news specific template and restrict web part usage in this page. Then in the mobile app we can do a custom rendering logic for the selected web parts which means that we don’t need to open it into browser. This way we can utilize SharePoint web parts in the news. Of course, we also can have like ex. external text editor PWA for content creation, but our focus was doing it in SharePoint.
 
 **Cool, but how we get the data?** We can get the web part data by using SP search api and parse/decode the “CanvasContent” field. This field has all the information what is needed to do a custom rendering for the web part.
 
