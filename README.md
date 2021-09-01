@@ -1,3 +1,7 @@
+[![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/)
+[![Microsoft SharePoint ](https://img.shields.io/badge/Microsoft_SharePoint-0078D4?style=for-the-badge&logo=microsoft-sharepoint&logoColor=white)](https://github.com/zounasL/Fix-Hack-Learn---Sharepoint) 
+[![Twitter](https://img.shields.io/badge/@JoonasLahteinen-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/JoonasLahteinen)
+
 # How to show SharePoint news in mobile app without multiple authentications flows
 Currently if you use Oauth2 authentication flow you will get an access- and refresh token which are scoped to specifics services, like ex. Graph and SharePoint API. You can then use these tokens to get data from SharePoint through APIs.
 
