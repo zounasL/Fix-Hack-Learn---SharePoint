@@ -1,5 +1,5 @@
 [![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/)
-[![Microsoft SharePoint ](https://img.shields.io/badge/Microsoft_SharePoint-0078D4?style=for-the-badge&logo=microsoft-sharepoint&logoColor=white)](https://github.com/zounasL/Fix-Hack-Learn---Sharepoint) 
+[![Microsoft SharePoint ](https://img.shields.io/badge/Microsoft_SharePoint-0078D4?style=for-the-badge&logo=microsoft-sharepoint&logoColor=white)](https://github.com/zounasL/Fix-Hack-Learn---SharePoint) 
 [![Twitter](https://img.shields.io/badge/@JoonasLahteinen-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/JoonasLahteinen)
 
 # How to show SharePoint news in mobile app without multiple authentications flows
